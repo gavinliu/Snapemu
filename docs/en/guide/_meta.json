@@ -1,0 +1,7 @@
+[
+  { "type": "file", "name": "index", "label": "User Guide" },
+  { "type": "file", "name": "getting-started", "label": "Getting Started" },
+  { "type": "file", "name": "import-games", "label": "Importing Games" },
+  { "type": "file", "name": "controls", "label": "Gameplay Controls" },
+  { "type": "file", "name": "faq", "label": "FAQ" }
+]

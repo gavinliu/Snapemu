@@ -1,0 +1,4 @@
+[
+  { "text": "User Guide", "link": "/guide/", "activeMatch": "/guide/" },
+  { "text": "Legal", "link": "/legal/", "activeMatch": "/legal/" }
+]

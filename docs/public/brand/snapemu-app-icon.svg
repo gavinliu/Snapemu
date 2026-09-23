@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Snapemu app icon</title>
+  <desc id="desc">Electric magenta S and cyan pixel on a clean graphite-purple adaptive icon background.</desc>
+  <defs>
+    <linearGradient id="background" x1="32" y1="24" x2="224" y2="232" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3F374D"/>
+      <stop offset="0.52" stop-color="#282131"/>
+      <stop offset="1" stop-color="#171421"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#background)"/>
+  <path fill="#FF2BD6" d="M176 48H88L48 88v28l104 40v12H64l-16 40h120l40-40v-28l-104-40V88h56Z"/>
+  <path fill="#00E5FF" d="M188 48h28v28h-28z"/>
+</svg>

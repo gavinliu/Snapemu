@@ -1,0 +1,5 @@
+[
+  { "type": "file", "name": "index", "label": "Legal" },
+  { "type": "file", "name": "privacy", "label": "Privacy Policy" },
+  { "type": "file", "name": "terms", "label": "Terms of Use" }
+]

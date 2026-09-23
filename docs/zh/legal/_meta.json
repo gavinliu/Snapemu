@@ -1,0 +1,5 @@
+[
+  { "type": "file", "name": "index", "label": "关于条款" },
+  { "type": "file", "name": "privacy", "label": "隐私政策" },
+  { "type": "file", "name": "terms", "label": "使用条款" }
+]
