@@ -247,13 +247,6 @@
   background: #ffffff0c;
   border-color: #ffffff40;
 }
-.nav-cta {
-  min-height: 44px;
-  padding: 9px 16px;
-  font-size: 12px;
-  gap: 10px;
-  border-radius: 7px;
-}
 .icon-button {
   width: 44px;
   height: 44px;
@@ -332,10 +325,8 @@
   line-height: 1.9;
   margin-top: 26px !important;
 }
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+.hero .store-badges {
+  justify-content: flex-start;
   margin-top: 34px;
 }
 .hero-note {
@@ -1093,6 +1084,63 @@
   color: var(--subtle);
 }
 
+.showcase-section {
+  padding-top: 86px;
+}
+.showcase-section h2 {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.7px;
+}
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 330px));
+  justify-content: center;
+  gap: 56px;
+  margin-top: 44px;
+}
+.showcase-grid figure {
+  margin: 0;
+}
+.showcase-grid img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 28px 48px #0007);
+}
+.showcase-grid figure:first-child {
+  transform: rotate(-2.5deg);
+}
+.showcase-grid figure:last-child {
+  transform: rotate(2.5deg);
+}
+.showcase-grid figcaption {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  color: var(--subtle);
+}
+.store-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+.store-badges a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-radius: 8px;
+}
+.store-badges img {
+  width: 135px;
+  height: 40px;
+}
+.store-badges a:hover img {
+  filter: brightness(1.18);
+}
+
 .premium-section {
   padding-top: 86px;
 }
@@ -1280,15 +1328,6 @@
   font-size: 12px;
   color: var(--muted);
   margin-top: 13px;
-}
-.closing-panel .button {
-  margin-top: 26px;
-}
-.closing-note {
-  display: block;
-  font-size: 12px;
-  color: var(--subtle);
-  margin-top: 17px;
 }
 .site-footer {
   padding-top: 67px;
@@ -1504,13 +1543,6 @@
   .locale-en .hero h1 {
     font-size: 55px;
   }
-  .locale-en .hero-buttons {
-    gap: 10px;
-  }
-  .locale-en .hero-buttons .button {
-    padding-inline: 17px;
-    font-size: 12px;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -1533,6 +1565,10 @@
     height: 68px;
     gap: 15px;
   }
+  .showcase-grid {
+    gap: 28px;
+    margin-top: 34px;
+  }
   .desktop-nav,
   .desktop-language {
     display: none;
@@ -1544,10 +1580,6 @@
     display: inline-flex;
     border: 0;
     width: 44px;
-  }
-  .nav-cta {
-    font-size: 12px;
-    padding-inline: 12px;
   }
   .mobile-nav {
     display: flex;
@@ -1598,17 +1630,6 @@
   }
   .hero-eyebrow {
     font-size: 12px;
-  }
-  .hero-buttons {
-    gap: 10px;
-  }
-  .hero-buttons .button {
-    padding-inline: 14px;
-    font-size: 12px;
-    gap: 8px;
-  }
-  .hero-buttons .button-primary > svg:first-child {
-    display: none;
   }
   .hero-note {
     font-size: 12px;
@@ -1766,13 +1787,6 @@
     font-size: 44px;
     letter-spacing: -2px;
   }
-  .locale-en .hero-buttons .button {
-    padding-inline: 12px;
-    font-size: 12px;
-  }
-  .locale-en .hero-buttons {
-    gap: 8px;
-  }
   .locale-en .feature-label {
     font-size: 12px;
     letter-spacing: 0.8px;
@@ -1787,6 +1801,18 @@
   .nav-shell {
     width: calc(100% - 40px);
   }
+  .showcase-section {
+    padding-top: 62px;
+  }
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin-inline: auto;
+    gap: 40px;
+  }
+  .showcase-grid figcaption {
+    margin-top: 14px;
+  }
   .nav-shell {
     gap: 12px;
   }
@@ -1795,15 +1821,6 @@
   }
   .nav-actions {
     gap: 10px;
-  }
-  .nav-cta {
-    min-height: 44px;
-    font-size: 12px;
-    padding: 8px 11px;
-    gap: 6px;
-  }
-  .nav-cta > svg {
-    width: 14px;
   }
   .hero {
     display: flex;
@@ -1833,18 +1850,9 @@
     margin-top: 22px !important;
     line-height: 1.9;
   }
-  .hero-buttons {
+  .hero .store-badges {
     margin-top: 27px;
     gap: 11px;
-  }
-  .hero-buttons .button {
-    min-height: 48px;
-    padding-inline: 17px;
-    font-size: 12px;
-  }
-  .hero-buttons .button-primary > svg:first-child {
-    display: block;
-    width: 18px;
   }
   .hero-note {
     max-width: 350px;
@@ -2190,11 +2198,6 @@
     max-width: 270px;
     margin: 13px auto 0;
   }
-  .closing-note {
-    font-size: 12px;
-    max-width: 245px;
-    margin-inline: auto;
-  }
   .site-footer {
     padding-top: 46px;
   }
@@ -2236,13 +2239,6 @@
   .locale-en .hero-description {
     font-size: 15px;
   }
-  .locale-en .hero-buttons .button {
-    padding-inline: 14px;
-    font-size: 12px;
-  }
-  .locale-en .hero-buttons .button-primary > svg:first-child {
-    display: none;
-  }
   .locale-en .platform-section h2 {
     font-size: 23px;
   }
@@ -2261,16 +2257,6 @@
   }
   .nav-actions {
     gap: 5px;
-  }
-  .nav-cta {
-    padding-inline: 8px;
-  }
-  .hero-buttons .button {
-    padding-inline: 12px;
-    font-size: 12px;
-  }
-  .hero-buttons {
-    gap: 8px;
   }
   .hero h1 {
     font-size: 46px;

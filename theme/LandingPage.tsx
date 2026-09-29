@@ -301,7 +301,7 @@ export default function LandingPage() {
   const t = (zh: string, en: string) => (isZh ? zh : en);
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState('original');
-  const [dialog, setDialog] = useState<'release' | 'premium' | null>(null);
+  const [dialog, setDialog] = useState<'premium' | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -348,7 +348,6 @@ export default function LandingPage() {
     };
   }, [dialog, dialogRef]);
 
-  const cta = t('获取上线通知', 'Get launch updates');
   const guideHref = withBase(isZh ? '/guide/' : '/en/guide/');
   const nav = [
     ['#platforms', t('支持平台', 'Systems')],
@@ -356,15 +355,6 @@ export default function LandingPage() {
     ['#premium', t('专业版', 'Premium')],
     ['#faq', t('常见问题', 'FAQ')],
   ];
-  const emailSubject = encodeURIComponent(
-    t('Snapemu 上线通知咨询', 'Snapemu launch updates'),
-  );
-  const emailBody = encodeURIComponent(
-    t(
-      '你好，我想了解 Snapemu 的上线消息。\n我使用的设备和系统：\n',
-      'Hello, I would like to hear about the Snapemu launch.\nMy device and operating system:\n',
-    ),
-  );
 
   return (
     <div
@@ -402,13 +392,6 @@ export default function LandingPage() {
             <div className="desktop-language">
               <LanguageMenu />
             </div>
-            <button
-              className="button button-primary nav-cta"
-              onClick={() => setDialog('release')}
-            >
-              {cta}
-              <Icon name="arrow" size={16} />
-            </button>
             <button
               ref={menuButtonRef}
               className="menu-toggle icon-button"
@@ -467,18 +450,34 @@ export default function LandingPage() {
                 'Your cross-platform retro game emulator. Organize your own collection and pick up a familiar adventure on your phone or tablet.',
               )}
             </p>
-            <div className="hero-buttons">
-              <button
-                className="button button-primary"
-                onClick={() => setDialog('release')}
+            <div className="store-badges hero-store-badges">
+              <a
+                href="https://snapemu.gavinliu.cn/"
+                aria-label={t(
+                  '在 App Store 下载 Snapemu',
+                  'Download Snapemu on the App Store',
+                )}
               >
-                <Icon name="gamepad" />
-                {cta}
-                <Icon name="arrow" size={18} />
-              </button>
-              <a className="button button-secondary" href="#platforms">
-                {t('查看支持平台', 'Explore systems')}
-                <Icon name="chevron" size={15} />
+                <img
+                  src={withBase('/store/app-store-badge.svg')}
+                  alt=""
+                  width="135"
+                  height="40"
+                />
+              </a>
+              <a
+                href="https://snapemu.gavinliu.cn/"
+                aria-label={t(
+                  '在 Google Play 下载 Snapemu',
+                  'Get Snapemu on Google Play',
+                )}
+              >
+                <img
+                  src={withBase('/store/google-play-badge.svg')}
+                  alt=""
+                  width="135"
+                  height="40"
+                />
               </a>
             </div>
             <p className="hero-note">
@@ -900,6 +899,49 @@ export default function LandingPage() {
         </section>
 
         <section
+          className="showcase-section section-shell"
+          aria-labelledby="showcase-heading"
+        >
+          <div className="section-topline">
+            <span className="eyebrow">SNAPEMU ON YOUR PHONE</span>
+          </div>
+          <h2 id="showcase-heading">
+            {t('熟悉的世界，', 'The classics,')}
+            <span className="muted-title">
+              {t('装进你的口袋。', 'now in your pocket.')}
+            </span>
+          </h2>
+          <div className="showcase-grid">
+            <figure>
+              <img
+                src={withBase('/screenshots/library.webp')}
+                alt={t(
+                  'Snapemu 游戏库界面截图：按平台分类展示游戏收藏',
+                  'Snapemu library screen: a collection organized by system',
+                )}
+                width="700"
+                height="1318"
+                loading="lazy"
+              />
+              <figcaption>{t('游戏库', 'Game library')}</figcaption>
+            </figure>
+            <figure>
+              <img
+                src={withBase('/screenshots/game-detail.webp')}
+                alt={t(
+                  'Snapemu 游戏详情界面截图：封面、介绍与版本选择',
+                  'Snapemu game details screen: cover art, description, and versions',
+                )}
+                width="700"
+                height="1318"
+                loading="lazy"
+              />
+              <figcaption>{t('游戏详情', 'Game details')}</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section
           className="premium-section section-shell"
           id="premium"
           aria-labelledby="premium-heading"
@@ -1001,19 +1043,38 @@ export default function LandingPage() {
                 'Organize your collection. Find your feel. Save your progress. Then, play on.',
               )}
             </p>
-            <button
-              className="button button-primary"
-              onClick={() => setDialog('release')}
-            >
-              {cta}
-              <Icon name="arrow" size={18} />
-            </button>
-            <span className="closing-note">
-              {t(
-                '发布平台与时间确认后，将提供正式下载入口。',
-                'Official downloads will follow once launch platforms and timing are confirmed.',
-              )}
-            </span>
+            <div className="store-badges">
+              <a
+                href="https://snapemu.gavinliu.cn/"
+                aria-label={t(
+                  '在 App Store 下载 Snapemu',
+                  'Download Snapemu on the App Store',
+                )}
+              >
+                <img
+                  src={withBase('/store/app-store-badge.svg')}
+                  alt=""
+                  width="135"
+                  height="40"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="https://snapemu.gavinliu.cn/"
+                aria-label={t(
+                  '在 Google Play 下载 Snapemu',
+                  'Get Snapemu on Google Play',
+                )}
+              >
+                <img
+                  src={withBase('/store/google-play-badge.svg')}
+                  alt=""
+                  width="135"
+                  height="40"
+                  loading="lazy"
+                />
+              </a>
+            </div>
           </div>
         </section>
       </main>
@@ -1082,34 +1143,21 @@ export default function LandingPage() {
             <Icon name="close" />
           </button>
           <div className="dialog-icon">
-            <Icon name={dialog === 'premium' ? 'diamond' : 'mail'} size={28} />
+            <Icon name="diamond" size={28} />
           </div>
-          <div className="eyebrow">
-            {dialog === 'premium' ? 'SNAPEMU PREMIUM' : 'STAY IN THE LOOP'}
-          </div>
+          <div className="eyebrow">SNAPEMU PREMIUM</div>
           <h2 id="dialog-title">
-            {dialog === 'premium'
-              ? t('更多选择，正在准备。', 'More ways to make it yours.')
-              : t('经典值得期待。', 'Something classic is coming.')}
+            {t('更多选择，正在准备。', 'More ways to make it yours.')}
           </h2>
           <p id="dialog-description">
-            {dialog === 'premium'
-              ? t(
-                  '专业版计划包含控制器换肤、更多封面展示，以及仅限 Android 的游戏桌面快捷方式。部分权益尚未上线，价格、可用平台与最终方案以 App 内页面为准。',
-                  'Premium plans include controller skins, more cover display options, and Android-only game shortcuts. Some benefits are not yet available. Prices, platforms, and final plans will be confirmed in the app.',
-                )
-              : t(
-                  '下载渠道、首发平台和上线时间仍在确认中。你可以通过邮件向开发者表达关注，并注明使用的设备与系统，咨询后续上线通知。',
-                  'Download channels, launch platforms, and release timing are still being confirmed. Email the developer with your device and operating system to ask about future launch updates.',
-                )}
+            {t(
+              '专业版计划包含控制器换肤、更多封面展示，以及仅限 Android 的游戏桌面快捷方式。部分权益尚未上线，价格、可用平台与最终方案以 App 内页面为准。',
+              'Premium plans include controller skins, more cover display options, and Android-only game shortcuts. Some benefits are not yet available. Prices, platforms, and final plans will be confirmed in the app.',
+            )}
           </p>
           <a
             className="button button-primary"
-            href={
-              dialog === 'release'
-                ? `mailto:snapemu@gavinliu.cn?subject=${emailSubject}&body=${emailBody}`
-                : 'mailto:snapemu@gavinliu.cn'
-            }
+            href="mailto:snapemu@gavinliu.cn"
           >
             <Icon name="mail" size={18} />
             {t('邮件联系开发者', 'Email the developer')}
