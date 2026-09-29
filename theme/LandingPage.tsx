@@ -16,7 +16,6 @@ type IconName =
   | 'sparkles'
   | 'save'
   | 'check'
-  | 'mail'
   | 'close'
   | 'menu'
   | 'globe'
@@ -51,12 +50,6 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
       </>
     ),
     check: <path d="m5 12 4 4L19 6" />,
-    mail: (
-      <>
-        <rect x="3" y="5" width="18" height="14" rx="3" />
-        <path d="m3 7 9 6 9-6" />
-      </>
-    ),
     close: <path d="m6 6 12 12M6 18 18 6" />,
     menu: <path d="M4 7h16M4 12h16M4 17h16" />,
     globe: (
@@ -171,6 +164,53 @@ function LanguageMenu({ onNavigate }: { onNavigate?: () => void }) {
       </ul>
     </div>
   );
+}
+
+const screenshots = [
+  {
+    src: '/screenshots/stars.webp',
+    alt: [
+      'Snapemu 收藏界面截图：以封面卡片展示收藏的游戏',
+      'Snapemu stars screen: favorites shown as cover cards',
+    ],
+    caption: ['收藏', 'Stars'],
+  },
+  {
+    src: '/screenshots/library.webp',
+    alt: [
+      'Snapemu 游戏库界面截图：按平台分类展示游戏收藏',
+      'Snapemu library screen: a collection organized by system',
+    ],
+    caption: ['游戏库', 'Game library'],
+  },
+  {
+    src: '/screenshots/settings.webp',
+    alt: [
+      'Snapemu 设置界面截图：主题、语言与视频滤镜选项',
+      'Snapemu settings screen: theme, language, and video filter options',
+    ],
+    caption: ['设置', 'Settings'],
+  },
+  {
+    src: '/screenshots/game-detail.webp',
+    alt: [
+      'Snapemu 游戏详情界面截图：封面、介绍与版本选择',
+      'Snapemu game details screen: cover art, description, and versions',
+    ],
+    caption: ['游戏详情', 'Game details'],
+  },
+  {
+    src: '/screenshots/gameplay.webp',
+    alt: [
+      'Snapemu 游戏实机画面截图：街机游戏配合虚拟手柄操作',
+      'Snapemu gameplay screen: an arcade title with on-screen controls',
+    ],
+    caption: ['游戏画面', 'Gameplay'],
+  },
+];
+
+function stepScreenshot(current: number, delta: number) {
+  return (current + delta + screenshots.length) % screenshots.length;
 }
 
 const platforms = [
@@ -301,9 +341,10 @@ export default function LandingPage() {
   const t = (zh: string, en: string) => (isZh ? zh : en);
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState('original');
-  const [dialog, setDialog] = useState<'premium' | null>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [lightbox, setLightbox] = useState<number | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const lightboxOpenerRef = useRef<HTMLElement | null>(null);
 
   useHead({
     htmlAttrs: { lang: isZh ? 'zh-CN' : 'en' },
@@ -331,24 +372,36 @@ export default function LandingPage() {
     ],
   });
 
+  const lightboxOpen = lightbox !== null;
   useEffect(() => {
-    if (!dialog) return;
-    const element = dialogRef.current;
-    const previousFocus =
-      document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
-    const previousOverflow = document.body.style.overflow;
-    element?.showModal();
-    document.body.style.overflow = 'hidden';
-    return () => {
-      element?.close();
-      document.body.style.overflow = previousOverflow;
-      previousFocus?.focus({ preventScroll: true });
+    if (!lightboxOpen) return;
+    const opener = lightboxOpenerRef.current;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setLightbox(null);
+      else if (event.key === 'ArrowLeft')
+        setLightbox((current) =>
+          current === null ? null : stepScreenshot(current, -1),
+        );
+      else if (event.key === 'ArrowRight')
+        setLightbox((current) =>
+          current === null ? null : stepScreenshot(current, 1),
+        );
     };
-  }, [dialog, dialogRef]);
+    document.addEventListener('keydown', onKey);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    lightboxRef.current?.focus();
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = previousOverflow;
+      opener?.focus({ preventScroll: true });
+    };
+  }, [lightboxOpen, setLightbox, lightboxRef, lightboxOpenerRef]);
 
   const guideHref = withBase(isZh ? '/guide/' : '/en/guide/');
+  const premiumHref = withBase(
+    isZh ? '/guide/premium.html' : '/en/guide/premium.html',
+  );
   const nav = [
     ['#platforms', t('支持平台', 'Systems')],
     ['#features', t('功能', 'Features')],
@@ -461,8 +514,8 @@ export default function LandingPage() {
                 <img
                   src={withBase('/store/app-store-badge.svg')}
                   alt=""
-                  width="135"
-                  height="40"
+                  width="162"
+                  height="48"
                 />
               </a>
               <a
@@ -475,18 +528,11 @@ export default function LandingPage() {
                 <img
                   src={withBase('/store/google-play-badge.svg')}
                   alt=""
-                  width="135"
-                  height="40"
+                  width="162"
+                  height="48"
                 />
               </a>
             </div>
-            <p className="hero-note">
-              <span className="note-mark">i</span>
-              {t(
-                '不提供游戏文件，请使用自有或合法授权的内容。',
-                'No games included. Bring your own legally authorized content.',
-              )}
-            </p>
           </div>
           <div
             className="hero-art"
@@ -590,19 +636,13 @@ export default function LandingPage() {
                   src={withBase(`/platforms/${platform.id}.png`)}
                   alt=""
                   width="40"
-                  height="40"
+                  height="48"
                   loading="lazy"
                 />
                 <strong>{platform.name}</strong>
               </div>
             ))}
           </div>
-          <p className="section-footnote">
-            {t(
-              '具体游戏兼容性可能因模拟核心、游戏文件与设备而异。',
-              'Game compatibility may vary by emulation core, game file, and device.',
-            )}
-          </p>
         </section>
 
         <section
@@ -666,26 +706,22 @@ export default function LandingPage() {
                     {t('你的收藏，从这里开始', 'Your collection starts here')}
                   </span>
                 </div>
-                {['nes', 'snes', 'gba'].map((platform, index) => (
-                  <div className="directory-row" key={platform}>
-                    <span className="directory-branch" />
-                    <img
-                      src={withBase(`/platforms/${platform}.png`)}
-                      alt=""
-                      width="28"
-                      height="28"
-                      loading="lazy"
-                    />
-                    <span>{platform.toUpperCase()}</span>
-                    <span className="directory-format">
-                      {['.nes', '.sfc', '.gba'][index]}
-                    </span>
-                    <Icon name="check" size={15} />
-                  </div>
-                ))}
-                <span className="visual-caption">
-                  {t('游戏目录结构示意', 'Game directory illustration')}
-                </span>
+                {['arcade', 'nes', 'snes', 'gb', 'gbc', 'gba'].map(
+                  (platform) => (
+                    <div className="directory-row" key={platform}>
+                      <span className="directory-branch" />
+                      <img
+                        src={withBase(`/platforms/${platform}.png`)}
+                        alt=""
+                        width="28"
+                        height="28"
+                        loading="lazy"
+                      />
+                      <span>{platform}</span>
+                      <Icon name="check" size={15} />
+                    </div>
+                  ),
+                )}
               </div>
             </article>
 
@@ -740,12 +776,6 @@ export default function LandingPage() {
                     </label>
                   ))}
                 </fieldset>
-                <span className="visual-caption">
-                  {t(
-                    '原创画面 · 仅作滤镜风格示意，非实机截图',
-                    'Original artwork · style illustration, not an app screenshot',
-                  )}
-                </span>
               </div>
             </article>
 
@@ -768,35 +798,64 @@ export default function LandingPage() {
                   )}
                 </p>
               </div>
-              <div className="controller-visual" aria-hidden="true">
-                <div className="controller-outline">
-                  <div className="dpad">
-                    <span />
-                    <span />
-                    <i />
-                  </div>
-                  <div className="controller-middle">
-                    <i />
-                    <i />
-                  </div>
-                  <div className="controller-buttons">
-                    <span>B</span>
-                    <span>A</span>
-                  </div>
+              <div className="controller-visual">
+                <img
+                  src={withBase('/screenshots/controller.webp')}
+                  alt={t(
+                    'Snapemu 虚拟手柄截图：方向键、A/B 按键与功能按键均可自定义',
+                    'Snapemu virtual controller: D-pad, A/B buttons, and function keys are all customizable',
+                  )}
+                  width="1206"
+                  height="905"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <article className="journey-card feature-card">
+              <div className="journey-copy">
+                <div className="feature-label">
+                  <Icon name="clock" />
+                  {t('游玩记录', 'YOUR PLAYING HISTORY')}
+                  <span>04</span>
                 </div>
-                <span className="controller-annotation">
-                  {t('你的手感，你来定义', 'YOUR CONTROLS. YOUR RULES.')}
-                </span>
+                <h3>
+                  {t(
+                    '每一次回归，都有迹可循。',
+                    'Every return becomes part of your story.',
+                  )}
+                </h3>
+                <p>
+                  {t(
+                    '累计时长、连续天数、常玩游戏。看见你和经典一起走过的旅程。',
+                    'Total play time, playing streaks, and your most-played games. A little history of your time with the classics.',
+                  )}
+                </p>
+                <div className="journey-tags">
+                  <span>{t('累计时长', 'Play time')}</span>
+                  <span>{t('连续天数', 'Playing streaks')}</span>
+                  <span>{t('常玩游戏', 'Your favorites')}</span>
+                </div>
+              </div>
+              <div className="journey-visual" aria-hidden="true">
+                <div className="heatmap">
+                  {Array.from({ length: 126 }, (_, i) => (
+                    <i
+                      key={i}
+                      className={`heat-${(i * 7 + Math.floor(i / 9) * 3) % 5}`}
+                    />
+                  ))}
+                </div>
               </div>
             </article>
 
             <article className="feature-card saves-card">
+              <div className="feature-label">
+                <Icon name="save" />
+                {t('存档与备份', 'PICK UP WHERE YOU LEFT OFF')}
+                <span>05</span>
+              </div>
               <div className="feature-copy">
-                <div className="feature-label">
-                  <Icon name="save" />
-                  {t('存档与备份', 'PICK UP WHERE YOU LEFT OFF')}
-                  <span>04</span>
-                </div>
                 <h3>
                   {t('暂停冒险，', 'Pause the adventure.')}
                   <br />
@@ -828,73 +887,7 @@ export default function LandingPage() {
                   <span>{t('恢复进度', 'Restore progress')}</span>
                 </div>
               </div>
-              <p className="visual-caption">
-                {t(
-                  '文件备份与恢复，不是云同步。',
-                  'File-based backup and restore. Not cloud sync.',
-                )}
-              </p>
             </article>
-
-            <article className="journey-card feature-card">
-              <div className="journey-copy">
-                <div className="feature-label">
-                  <Icon name="clock" />
-                  {t('游玩记录', 'YOUR PLAYING HISTORY')}
-                </div>
-                <h3>
-                  {t(
-                    '每一次回归，都有迹可循。',
-                    'Every return becomes part of your story.',
-                  )}
-                </h3>
-                <p>
-                  {t(
-                    '累计时长、连续天数、常玩游戏。看见你和经典一起走过的旅程。',
-                    'Total play time, playing streaks, and your most-played games. A little history of your time with the classics.',
-                  )}
-                </p>
-                <div className="journey-tags">
-                  <span>{t('累计时长', 'Play time')}</span>
-                  <span>{t('连续天数', 'Playing streaks')}</span>
-                  <span>{t('常玩游戏', 'Your favorites')}</span>
-                </div>
-              </div>
-              <div className="journey-visual" aria-hidden="true">
-                <div className="heatmap">
-                  {Array.from({ length: 126 }, (_, i) => (
-                    <i
-                      key={i}
-                      className={`heat-${(i * 7 + Math.floor(i / 9) * 3) % 5}`}
-                    />
-                  ))}
-                </div>
-                <span>EVERY PIXEL TELLS A STORY.</span>
-              </div>
-            </article>
-          </div>
-          <div className="personalization-note">
-            <span className="theme-dots" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-              <i />
-            </span>
-            <span>
-              {t(
-                '七种主题配色，深浅两种心情。',
-                'Seven theme colors. Light and dark moods.',
-              )}
-              <span className="muted">
-                {t(
-                  ' 简体中文 / English / 跟随系统',
-                  ' English / 简体中文 / System preferences',
-                )}
-              </span>
-            </span>
           </div>
         </section>
 
@@ -912,32 +905,31 @@ export default function LandingPage() {
             </span>
           </h2>
           <div className="showcase-grid">
-            <figure>
-              <img
-                src={withBase('/screenshots/library.webp')}
-                alt={t(
-                  'Snapemu 游戏库界面截图：按平台分类展示游戏收藏',
-                  'Snapemu library screen: a collection organized by system',
-                )}
-                width="700"
-                height="1318"
-                loading="lazy"
-              />
-              <figcaption>{t('游戏库', 'Game library')}</figcaption>
-            </figure>
-            <figure>
-              <img
-                src={withBase('/screenshots/game-detail.webp')}
-                alt={t(
-                  'Snapemu 游戏详情界面截图：封面、介绍与版本选择',
-                  'Snapemu game details screen: cover art, description, and versions',
-                )}
-                width="700"
-                height="1318"
-                loading="lazy"
-              />
-              <figcaption>{t('游戏详情', 'Game details')}</figcaption>
-            </figure>
+            {screenshots.map((shot, index) => (
+              <figure key={shot.src}>
+                <button
+                  type="button"
+                  className="showcase-zoom"
+                  onClick={(event) => {
+                    lightboxOpenerRef.current = event.currentTarget;
+                    setLightbox(index);
+                  }}
+                  aria-label={t(
+                    `放大查看「${shot.caption[0]}」截图`,
+                    `Zoom in: ${shot.caption[1]} screenshot`,
+                  )}
+                >
+                  <img
+                    src={withBase(shot.src)}
+                    alt={t(shot.alt[0], shot.alt[1])}
+                    width="700"
+                    height="1318"
+                    loading="lazy"
+                  />
+                </button>
+                <figcaption>{t(shot.caption[0], shot.caption[1])}</figcaption>
+              </figure>
+            ))}
           </div>
         </section>
 
@@ -968,13 +960,10 @@ export default function LandingPage() {
                 )}
               </span>
             </div>
-            <button
-              className="button button-secondary"
-              onClick={() => setDialog('premium')}
-            >
+            <a className="button button-secondary" href={premiumHref}>
               {t('了解专业版', 'Explore Premium')}
               <Icon name="arrow" size={18} />
-            </button>
+            </a>
           </div>
         </section>
 
@@ -1054,8 +1043,8 @@ export default function LandingPage() {
                 <img
                   src={withBase('/store/app-store-badge.svg')}
                   alt=""
-                  width="135"
-                  height="40"
+                  width="162"
+                  height="48"
                   loading="lazy"
                 />
               </a>
@@ -1069,8 +1058,8 @@ export default function LandingPage() {
                 <img
                   src={withBase('/store/google-play-badge.svg')}
                   alt=""
-                  width="135"
-                  height="40"
+                  width="162"
+                  height="48"
                   loading="lazy"
                 />
               </a>
@@ -1114,62 +1103,58 @@ export default function LandingPage() {
         </div>
       </footer>
 
-      {dialog && (
-        <dialog
-          ref={dialogRef}
-          className="info-dialog"
-          aria-labelledby="dialog-title"
-          aria-describedby="dialog-description"
-          onCancel={() => setDialog(null)}
-          onClose={() => setDialog(null)}
+      {lightbox !== null && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('截图放大查看', 'Screenshot viewer')}
+          ref={lightboxRef}
+          tabIndex={-1}
           onClick={(event) => {
-            if (event.target === event.currentTarget) {
-              const rect = event.currentTarget.getBoundingClientRect();
-              if (
-                event.clientX < rect.left ||
-                event.clientX > rect.right ||
-                event.clientY < rect.top ||
-                event.clientY > rect.bottom
-              )
-                setDialog(null);
-            }
+            if (event.target === event.currentTarget) setLightbox(null);
           }}
         >
           <button
-            className="dialog-close icon-button"
+            type="button"
+            className="lightbox-close"
             aria-label={t('关闭', 'Close')}
-            onClick={() => setDialog(null)}
+            onClick={() => setLightbox(null)}
           >
-            <Icon name="close" />
+            <Icon name="close" size={20} />
           </button>
-          <div className="dialog-icon">
-            <Icon name="diamond" size={28} />
-          </div>
-          <div className="eyebrow">SNAPEMU PREMIUM</div>
-          <h2 id="dialog-title">
-            {t('更多选择，正在准备。', 'More ways to make it yours.')}
-          </h2>
-          <p id="dialog-description">
-            {t(
-              '专业版计划包含控制器换肤、更多封面展示，以及仅限 Android 的游戏桌面快捷方式。部分权益尚未上线，价格、可用平台与最终方案以 App 内页面为准。',
-              'Premium plans include controller skins, more cover display options, and Android-only game shortcuts. Some benefits are not yet available. Prices, platforms, and final plans will be confirmed in the app.',
-            )}
-          </p>
-          <a
-            className="button button-primary"
-            href="mailto:snapemu@gavinliu.cn"
+          <button
+            type="button"
+            className="lightbox-nav lightbox-prev"
+            aria-label={t('上一张', 'Previous screenshot')}
+            onClick={() => setLightbox(stepScreenshot(lightbox, -1))}
           >
-            <Icon name="mail" size={18} />
-            {t('邮件联系开发者', 'Email the developer')}
-            <Icon name="arrow" size={18} />
-          </a>
-          <span className="dialog-footnote">
-            {t(
-              '将打开你的邮件应用；本页不会提交或保存订阅信息。',
-              'Opens your email app. This page does not submit or store subscriptions.',
-            )}
-          </span>
-        </dialog>
+            <Icon name="chevron" size={22} />
+          </button>
+          <figure className="lightbox-figure" key={lightbox}>
+            <img
+              src={withBase(screenshots[lightbox].src)}
+              alt={t(
+                screenshots[lightbox].alt[0],
+                screenshots[lightbox].alt[1],
+              )}
+            />
+            <figcaption>
+              {t(
+                screenshots[lightbox].caption[0],
+                screenshots[lightbox].caption[1],
+              )}
+            </figcaption>
+          </figure>
+          <button
+            type="button"
+            className="lightbox-nav lightbox-next"
+            aria-label={t('下一张', 'Next screenshot')}
+            onClick={() => setLightbox(stepScreenshot(lightbox, 1))}
+          >
+            <Icon name="chevron" size={22} />
+          </button>
+        </div>
       )}
     </div>
   );

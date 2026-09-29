@@ -3,5 +3,6 @@
   { "type": "file", "name": "getting-started", "label": "开始使用" },
   { "type": "file", "name": "import-games", "label": "导入游戏" },
   { "type": "file", "name": "controls", "label": "玩法控制" },
+  { "type": "file", "name": "premium", "label": "了解专业版" },
   { "type": "file", "name": "faq", "label": "常见问题" }
 ]

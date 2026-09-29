@@ -12,6 +12,9 @@ export default defineConfig({
     light: '/brand/snapemu-logo.svg',
     dark: '/brand/snapemu-logo-dark.svg',
   },
+  themeConfig: {
+    darkMode: 'dark',
+  },
   locales: [
     {
       lang: 'zh',
