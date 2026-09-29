@@ -2,6 +2,11 @@
   --rp-c-brand: #d918b4;
   --rp-c-brand-light: #ff2bd6;
   --rp-c-brand-dark: #b71599;
+  --rp-font-family-base:
+    'Inter var experimental', 'Inter var', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    sans-serif;
 }
 
 .snapemu-site {
@@ -18,9 +23,7 @@
   --radius: 20px;
   background: var(--bg);
   color: var(--text);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-    'Microsoft YaHei', sans-serif;
+  font-family: var(--rp-font-family-base);
   font-size: 16px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -137,7 +140,9 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
   color: var(--muted);
 }
 .desktop-nav a:hover {
@@ -159,7 +164,9 @@
   padding: 0;
   border: 0;
   background: transparent;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -219,7 +226,7 @@
   gap: 12px;
   min-height: 50px;
   padding: 12px 23px;
-  font-weight: 650;
+  font-weight: 700;
   font-size: 14px;
   border: 1px solid transparent;
   border-radius: 9px;
@@ -281,7 +288,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  font-family: var(--rp-font-family-mono);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -406,10 +413,7 @@
 }
 .art-coordinate {
   position: absolute;
-  font:
-    9px 'SFMono-Regular',
-    Consolas,
-    monospace;
+  font: 9px var(--rp-font-family-mono);
   letter-spacing: 2.1px;
   color: var(--subtle);
 }
@@ -424,7 +428,7 @@
 .art-cross {
   position: absolute;
   color: #68616f;
-  font: 19px monospace;
+  font: 19px var(--rp-font-family-mono);
 }
 .cross-one {
   right: 14%;
@@ -444,10 +448,7 @@
   border: 1px solid #ffffff14;
   border-radius: 11px;
   box-shadow: 0 10px 30px #0004;
-  font:
-    8px 'SFMono-Regular',
-    Consolas,
-    monospace;
+  font: 8px var(--rp-font-family-mono);
   letter-spacing: 1.3px;
   color: #c9c1d1;
 }
@@ -628,7 +629,7 @@
 }
 .feature-label > span {
   margin-left: auto;
-  font-family: monospace;
+  font-family: var(--rp-font-family-mono);
   color: var(--subtle);
   letter-spacing: 2px;
 }
@@ -673,13 +674,13 @@
   padding-bottom: 12px;
   border-bottom: 1px solid var(--line);
   color: #ded6e6;
-  font: 13px monospace;
+  font: 13px var(--rp-font-family-mono);
 }
 .directory-title svg {
   color: var(--pink);
 }
 .directory-caption {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--rp-font-family-base);
   color: var(--subtle);
   font-size: 13px;
   margin-left: auto;
@@ -689,7 +690,7 @@
   align-items: center;
   gap: 12px;
   padding: 12px 7px 0 0;
-  font-family: monospace;
+  font-family: var(--rp-font-family-mono);
   font-size: 13px;
 }
 .directory-row img {
@@ -1149,7 +1150,8 @@
   min-height: 44px;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   margin-top: 22px;
   color: #d5c8df !important;
 }
@@ -1182,7 +1184,7 @@
   font-weight: 500;
 }
 .faq-number {
-  font: 9px monospace;
+  font: 9px var(--rp-font-family-mono);
   color: var(--subtle);
 }
 .faq-plus {
@@ -1273,7 +1275,7 @@
   border-bottom: 1px solid var(--line);
 }
 .footer-top > span {
-  font: 8px monospace;
+  font: 8px var(--rp-font-family-mono);
   letter-spacing: 1.7px;
   color: var(--subtle);
 }
@@ -1292,7 +1294,8 @@
   border: 0;
   padding: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
 }
 .footer-top nav :is(a, button):hover {
   color: var(--pink);
@@ -1302,7 +1305,7 @@
   align-items: center;
   gap: 25px;
   color: var(--subtle);
-  font-size: 13px;
+  font-size: 14px;
   padding-top: 14px;
 }
 .footer-bottom > a {
@@ -1473,6 +1476,7 @@
     justify-content: space-between;
     min-height: 49px;
     font-size: 14px;
+    font-weight: 500;
     color: #ded4e6;
     border-bottom: 1px solid var(--line);
   }
@@ -1480,6 +1484,7 @@
     width: 100%;
     min-height: 49px;
     font-size: 14px;
+    font-weight: 500;
   }
   .mobile-nav .language-trigger > svg:last-child {
     margin-left: auto;
@@ -2013,7 +2018,6 @@
   }
   .text-link {
     margin-top: 11px;
-    font-size: 13px;
   }
   .faq-item summary {
     min-height: 73px;
@@ -2065,11 +2069,8 @@
     margin: 0;
     gap: 25px;
   }
-  .footer-top nav :is(a, button) {
-    font-size: 13px;
-  }
   .footer-bottom {
-    font-size: 13px;
+    font-size: 14px;
   }
   .locale-en .hero h1 {
     font-size: clamp(46px, 11.5vw, 64px);
