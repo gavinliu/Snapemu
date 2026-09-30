@@ -256,11 +256,11 @@ const faqs = [
   {
     zh: [
       '可以使用外部手柄吗？',
-      'Snapemu 提供键盘和外部手柄的启用与按键映射设置，让操作更符合你的习惯。具体设备与平台的支持范围，以正式发布版本的说明为准。',
+      'Snapemu 提供键盘和外部手柄的启用与按键映射设置，让操作更符合你的习惯。',
     ],
     en: [
       'Can I use an external controller?',
-      'Keyboard and external controller settings include custom button mapping. Device and platform support will be detailed with the released version.',
+      'Keyboard and external controller settings include custom button mapping, so it plays the way you like.',
     ],
   },
   {
@@ -276,11 +276,11 @@ const faqs = [
   {
     zh: [
       '如何把游戏添加到桌面？',
-      '此功能仅适用于 Android。你可以在游戏详情页请求添加桌面快捷方式，并按系统提示完成。如果未成功，请检查系统设置中 Snapemu 的快捷方式权限。具体权益以 App 内专业版页面为准。',
+      '此功能仅适用于 Android。你可以在游戏详情页请求添加桌面快捷方式，并按系统提示完成。如果未成功，请检查系统设置中 Snapemu 的快捷方式权限。桌面快捷方式属于专业版功能。',
     ],
     en: [
       'How do I add a game to my home screen?',
-      'This feature is Android-only. Request a shortcut from the game details page and follow the system prompts. If it fails, check Snapemu’s shortcut permission in system settings. Availability is subject to the in-app Premium offering.',
+      'This feature is Android-only. Request a shortcut from the game details page and follow the system prompts. If it fails, check Snapemu’s shortcut permission in system settings. Home screen shortcuts are part of Premium.',
     ],
   },
 ];
@@ -686,11 +686,6 @@ export default function LandingPage() {
                     'Scan your game directory and organize by system. Search, recently played, and favorites bring your next adventure closer.',
                   )}
                 </p>
-                <div className="feature-chips">
-                  <span>{t('目录扫描', 'Directory scan')}</span>
-                  <span>{t('星选收藏', 'Favorites')}</span>
-                  <span>{t('游戏详情与预览', 'Details & previews')}</span>
-                </div>
               </div>
               <div
                 className="library-visual"
@@ -820,10 +815,9 @@ export default function LandingPage() {
                   <span>04</span>
                 </div>
                 <h3>
-                  {t(
-                    '每一次回归，都有迹可循。',
-                    'Every return becomes part of your story.',
-                  )}
+                  {t('每一次回归，', 'Every return')}
+                  <br />
+                  {t('都有迹可循。', 'becomes part of your story.')}
                 </h3>
                 <p>
                   {t(
@@ -831,11 +825,6 @@ export default function LandingPage() {
                     'Total play time, playing streaks, and your most-played games. A little history of your time with the classics.',
                   )}
                 </p>
-                <div className="journey-tags">
-                  <span>{t('累计时长', 'Play time')}</span>
-                  <span>{t('连续天数', 'Playing streaks')}</span>
-                  <span>{t('常玩游戏', 'Your favorites')}</span>
-                </div>
               </div>
               <div className="journey-visual" aria-hidden="true">
                 <div className="heatmap">
@@ -949,16 +938,10 @@ export default function LandingPage() {
               </h2>
               <p>
                 {t(
-                  '探索控制器换肤、更多封面展示与 Android 桌面快捷方式等专业版计划。',
-                  'Explore planned Premium options, from controller skins to more cover displays and Android home screen shortcuts.',
+                  '你的每一次支持，都会化作更用心的 Snapemu。',
+                  'Every bit of your support becomes a more lovingly made Snapemu.',
                 )}
               </p>
-              <span className="premium-disclaimer">
-                {t(
-                  '部分权益仍在准备中，具体权益与方案以 App 内为准。',
-                  'Some benefits are still in preparation. Final features and plans are subject to the in-app offering.',
-                )}
-              </span>
             </div>
             <a className="button button-secondary" href={premiumHref}>
               {t('了解专业版', 'Explore Premium')}

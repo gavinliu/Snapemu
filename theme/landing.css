@@ -646,19 +646,6 @@
   margin-top: 15px;
   max-width: 430px;
 }
-.feature-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 20px;
-}
-.feature-chips > span {
-  color: #c8c0d0;
-  font-size: 13px;
-  border: 1px solid #ffffff13;
-  padding: 4px 9px;
-  border-radius: 5px;
-}
 .library-card {
   background:
     radial-gradient(ellipse at 95% 100%, #39224236, transparent 70%),
@@ -906,22 +893,6 @@
 .heatmap .heat-4 {
   background: #de36bc;
 }
-.journey-tags {
-  display: flex;
-  gap: 18px;
-  font-size: 13px;
-  color: #c9bfd3;
-  margin-top: 20px;
-}
-.journey-tags span::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  display: inline-block;
-  background: var(--pink);
-  margin-right: 7px;
-  vertical-align: middle;
-}
 
 .showcase-section {
   padding-top: 86px;
@@ -946,12 +917,6 @@
   width: 100%;
   height: auto;
   filter: drop-shadow(0 28px 48px #0007);
-}
-.showcase-grid figure:nth-child(odd) {
-  transform: rotate(-2.5deg);
-}
-.showcase-grid figure:nth-child(even) {
-  transform: rotate(2.5deg);
 }
 .showcase-grid figcaption {
   margin-top: 20px;
@@ -1116,12 +1081,6 @@
   color: var(--muted);
   font-size: 14px;
   line-height: 1.8;
-  margin-top: 8px;
-}
-.premium-disclaimer {
-  display: block;
-  color: var(--subtle);
-  font-size: 13px;
   margin-top: 8px;
 }
 .premium-panel > .button {
@@ -1906,9 +1865,6 @@
   .feature-label {
     font-size: 13px;
   }
-  .feature-chips {
-    margin-top: 19px;
-  }
   .library-visual {
     margin: 30px 25px 22px;
   }
@@ -1990,9 +1946,6 @@
     font-size: 24px;
   }
   .premium-copy p {
-    font-size: 13px;
-  }
-  .premium-disclaimer {
     font-size: 13px;
   }
   .premium-panel > .button {
