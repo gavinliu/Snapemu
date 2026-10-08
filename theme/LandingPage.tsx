@@ -399,6 +399,7 @@ export default function LandingPage() {
   }, [lightboxOpen, setLightbox, lightboxRef, lightboxOpenerRef]);
 
   const guideHref = withBase(isZh ? '/guide/' : '/en/guide/');
+  const supportHref = withBase(isZh ? '/support.html' : '/en/support.html');
   const premiumHref = withBase(
     isZh ? '/guide/premium.html' : '/en/guide/premium.html',
   );
@@ -407,6 +408,7 @@ export default function LandingPage() {
     ['#features', t('功能', 'Features')],
     ['#premium', t('专业版', 'Premium')],
     ['#faq', t('常见问题', 'FAQ')],
+    [supportHref, t('支持与帮助', 'Support')],
   ];
 
   return (
@@ -1074,7 +1076,7 @@ export default function LandingPage() {
             <a href={withBase(isZh ? '/legal/terms' : '/en/legal/terms')}>
               {t('使用条款', 'Terms of Use')}
             </a>
-            <a href="mailto:snapemu@gavinliu.cn">{t('意见反馈', 'Feedback')}</a>
+            <a href={supportHref}>{t('支持与帮助', 'Support')}</a>
           </nav>
         </div>
         <div className="footer-bottom">

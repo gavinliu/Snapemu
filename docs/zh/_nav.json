@@ -1,4 +1,5 @@
 [
   { "text": "使用指南", "link": "/guide/", "activeMatch": "/guide/" },
-  { "text": "关于条款", "link": "/legal/", "activeMatch": "/legal/" }
+  { "text": "关于条款", "link": "/legal/", "activeMatch": "/legal/" },
+  { "text": "支持与帮助", "link": "/support", "activeMatch": "/support" }
 ]
