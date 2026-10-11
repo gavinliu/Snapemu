@@ -5,7 +5,7 @@ description: The Snapemu terms of use — licensing and usage rules, Premium pur
 
 # Terms of Use
 
-**Effective date: September 30, 2026**
+**Effective date: October 11, 2026**
 
 Welcome to Snapemu. These terms form the agreement between you and the developer of Snapemu ("we" or "us") regarding your use of the Snapemu app (the "App") and snapemu.gavinliu.cn (the "Website"). Please read them in full before downloading, installing, or using the App; by starting to use it, you accept these terms. For how we handle information, see the [Privacy Policy](./privacy.md).
 
@@ -17,12 +17,11 @@ Welcome to Snapemu. These terms form the agreement between you and the developer
 
 ## 2. Game content and your responsibilities
 
-Snapemu is an emulator: it runs game files that you provide. We:
+Snapemu is an emulator that runs game files you import and includes selected games distributed under third-party licenses. See [Bundled Game Licenses](./bundled-games.md) for their creators, sources, copyright notices, and license scopes. Rights to these games belong to their respective rights holders.
 
-- do not include, provide, or distribute any game ROMs, BIOS files, or other game content;
-- do not provide any means of obtaining them.
+Apart from these bundled games, you need to prepare your own game files and any required BIOS files, and ensure that you hold the legal right to use them. We do not provide unauthorized game content or BIOS files, or means of obtaining such unauthorized content.
 
-You need to prepare your own game files and BIOS files, and you are responsible for ensuring that you hold the legal right to use them (for example, a personal dump of a cartridge you own, or freely licensed content). You are responsible for the content you import and for how you use the App, and you agree not to use it to infringe others' intellectual property or to break the law. If you breach this section, we may terminate the license we granted you.
+You are responsible for the content you import and for how you use the App, and you agree not to use it to infringe others' intellectual property or to break the law. If you breach this section, we may terminate the license we granted you.
 
 ## 3. Premium and purchases
 
@@ -54,8 +53,9 @@ This section does not affect statutory rights that cannot be excluded or limited
 
 ## 6. Intellectual property
 
-- The App — including its code, interface, and the Snapemu name and logo — is our intellectual property. All rights not expressly granted by these terms are reserved;
-- Third-party components and their content within the App belong to their respective rights holders and are provided under their respective terms;
+- The code and interface we create for the App, and the Snapemu name and logo, are our intellectual property. All rights not expressly granted by these terms are reserved;
+- Third-party components and bundled games belong to their respective rights holders and are provided under their respective licenses; see [Bundled Game Licenses](./bundled-games.md) for the game licenses;
+- The personal-use, non-transferability, and other restrictions in these terms do not limit rights granted by third-party licenses for the corresponding code or assets. If these terms conflict with a third-party license regarding that content, the corresponding third-party license prevails;
 - You may not use the Snapemu name or logo in ways that could cause confusion without our permission.
 
 ## 7. About Apple and Google

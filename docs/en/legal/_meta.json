@@ -1,5 +1,22 @@
 [
-  { "type": "file", "name": "index", "label": "Legal" },
-  { "type": "file", "name": "privacy", "label": "Privacy Policy" },
-  { "type": "file", "name": "terms", "label": "Terms of Use" }
+  {
+    "type": "file",
+    "name": "index",
+    "label": "Legal"
+  },
+  {
+    "type": "file",
+    "name": "privacy",
+    "label": "Privacy Policy"
+  },
+  {
+    "type": "file",
+    "name": "terms",
+    "label": "Terms of Use"
+  },
+  {
+    "type": "file",
+    "name": "bundled-games",
+    "label": "Bundled Game Licenses"
+  }
 ]

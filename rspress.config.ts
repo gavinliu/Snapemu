@@ -7,6 +7,17 @@ export default defineConfig({
   description:
     '用 Snapemu 整理自己的复古游戏收藏，体验多平台游戏库、个性化画面与操控、存档备份和游玩记录。',
   lang: 'zh',
+  markdown: {
+    link: {
+      checkDeadLinks: {
+        excludes: [
+          '/licenses/bundled-games/falling/LICENSE.txt',
+          '/licenses/bundled-games/tobu-tobu-girl/LICENSE.txt',
+          '/licenses/bundled-games/tobu-tobu-girl-deluxe/LICENSE.txt',
+        ],
+      },
+    },
+  },
   icon: '/brand/snapemu-app-icon.svg',
   logo: {
     light: '/brand/snapemu-logo.svg',

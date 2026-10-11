@@ -226,11 +226,11 @@ const faqs = [
   {
     zh: [
       'Snapemu 会提供游戏吗？',
-      '不会。Snapemu 不提供游戏文件。请使用从自己拥有的正版游戏中合法导出的 ROM，或获得合法授权的自制游戏和免费游戏，并遵守所在地区的法律与版权要求。',
+      'Snapemu 内置部分按第三方许可证授权分发的游戏。其他游戏需要自行导入，请确保拥有合法使用权，并遵守所在地区的法律与版权要求。内置游戏的作者、来源与许可范围见官网的「内置游戏许可」页面。',
     ],
     en: [
       'Does Snapemu include games?',
-      'No. Snapemu does not provide game files. Use ROMs legally extracted from games you own, or authorized homebrew and free games. Always follow the laws and copyright requirements in your region.',
+      'Snapemu includes selected games distributed under third-party licenses. Import other games yourself and ensure you have the legal right to use them under local laws and copyright requirements. See the Bundled Game Licenses page on this website for creators, sources, and license scopes.',
     ],
   },
   {
