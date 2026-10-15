@@ -8,6 +8,11 @@ import {
 } from '@rspress/core/runtime';
 import './landing.css';
 
+const APP_STORE_URL_ZH = 'https://apps.apple.com/cn/app/id6818737704';
+const APP_STORE_URL_EN = 'https://apps.apple.com/us/app/id6818737704';
+const PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=cn.gavinliu.snapemu';
+
 type IconName =
   | 'arrow'
   | 'chevron'
@@ -507,7 +512,7 @@ export default function LandingPage() {
             </p>
             <div className="store-badges hero-store-badges">
               <a
-                href="https://snapemu.gavinliu.cn/"
+                href={isZh ? APP_STORE_URL_ZH : APP_STORE_URL_EN}
                 aria-label={t(
                   '在 App Store 下载 Snapemu',
                   'Download Snapemu on the App Store',
@@ -521,7 +526,7 @@ export default function LandingPage() {
                 />
               </a>
               <a
-                href="https://snapemu.gavinliu.cn/"
+                href={PLAY_STORE_URL}
                 aria-label={t(
                   '在 Google Play 下载 Snapemu',
                   'Get Snapemu on Google Play',
@@ -1019,7 +1024,7 @@ export default function LandingPage() {
             </p>
             <div className="store-badges">
               <a
-                href="https://snapemu.gavinliu.cn/"
+                href={isZh ? APP_STORE_URL_ZH : APP_STORE_URL_EN}
                 aria-label={t(
                   '在 App Store 下载 Snapemu',
                   'Download Snapemu on the App Store',
@@ -1034,7 +1039,7 @@ export default function LandingPage() {
                 />
               </a>
               <a
-                href="https://snapemu.gavinliu.cn/"
+                href={PLAY_STORE_URL}
                 aria-label={t(
                   '在 Google Play 下载 Snapemu',
                   'Get Snapemu on Google Play',
