@@ -1,6 +1,6 @@
 ---
 title: Premium
-description: Learn about Snapemu Premium plans: controller skins, more cover display options, and Android home screen shortcuts. Final plans and pricing are confirmed in the app.
+description: Learn about Snapemu Premium plans: controller skins, more cover display options, and sending games to the home screen on iOS and Android. Final plans and pricing are confirmed in the app.
 ---
 
 # Premium
@@ -11,7 +11,7 @@ The core Snapemu experience is free. Premium adds extra personalization options 
 
 - **Controller skins**: Change the look of the virtual controller.
 - **More cover displays**: Use richer cover display options in your game library.
-- **Home screen shortcuts (Android only)**: Add a game to your system home screen from its details page and jump right back in.
+- **Send games to the home screen (iOS and Android)**: Send a game to your system home screen from its details page and jump right back in.
 
 ## Availability and Pricing
 

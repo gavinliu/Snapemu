@@ -25,7 +25,7 @@ You are responsible for the content you import and for how you use the App, and 
 
 ## 3. Premium and purchases
 
-The core of Snapemu is free. Premium adds more personalization on top — for example, controller skins, richer cover display options, and Android home screen shortcuts.
+The core of Snapemu is free. Premium adds more personalization on top — for example, controller skins, richer cover display options, and sending games to the home screen on iOS and Android.
 
 - **Purchases and payment**: Premium is purchased through in-app purchases on the App Store or Google Play, and payment is processed by Apple or Google;
 - **Plans**: Premium offers a monthly subscription, an annual subscription, and a lifetime option (a one-time purchase). The exact benefits and prices are shown on the Premium page inside the App;

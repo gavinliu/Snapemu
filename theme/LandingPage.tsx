@@ -280,12 +280,12 @@ const faqs = [
   },
   {
     zh: [
-      '如何把游戏添加到桌面？',
-      '此功能仅适用于 Android。你可以在游戏详情页请求添加桌面快捷方式，并按系统提示完成。如果未成功，请检查系统设置中 Snapemu 的快捷方式权限。桌面快捷方式属于专业版功能。',
+      '如何发送游戏到桌面？',
+      '此功能支持 iOS 与 Android。你可以在游戏详情页选择发送游戏到桌面，并按系统提示完成。发送游戏到桌面属于专业版功能。',
     ],
     en: [
-      'How do I add a game to my home screen?',
-      'This feature is Android-only. Request a shortcut from the game details page and follow the system prompts. If it fails, check Snapemu’s shortcut permission in system settings. Home screen shortcuts are part of Premium.',
+      'How do I send a game to my home screen?',
+      'This feature is available on iOS and Android. Choose to send a game to the home screen from its details page, then follow the system prompts. Sending games to the home screen is part of Premium.',
     ],
   },
 ];
