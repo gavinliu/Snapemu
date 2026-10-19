@@ -4,5 +4,6 @@
   { "type": "file", "name": "import-games", "label": "Importing Games" },
   { "type": "file", "name": "controls", "label": "Gameplay Controls" },
   { "type": "file", "name": "premium", "label": "Premium" },
-  { "type": "file", "name": "faq", "label": "FAQ" }
+  { "type": "file", "name": "faq", "label": "FAQ" },
+  { "type": "file", "name": "support", "label": "Support" }
 ]

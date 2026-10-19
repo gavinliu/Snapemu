@@ -45,6 +45,6 @@ Do not send passwords, payment card details, game ROMs, or BIOS files. Support d
 
 ## More information
 
-- [User Guide](./guide/index.md)
-- [Privacy Policy](./legal/privacy.md)
-- [Terms of Use](./legal/terms.md)
+- [User Guide](./index.md)
+- [Privacy Policy](../legal/privacy.md)
+- [Terms of Use](../legal/terms.md)

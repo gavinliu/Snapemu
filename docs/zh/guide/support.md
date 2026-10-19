@@ -45,6 +45,6 @@ description: 联系 Snapemu 开发者，咨询使用问题、反馈故障或提�
 
 ## 更多信息
 
-- [使用指南](./guide/index.md)
-- [隐私政策](./legal/privacy.md)
-- [使用条款](./legal/terms.md)
+- [使用指南](./index.md)
+- [隐私政策](../legal/privacy.md)
+- [使用条款](../legal/terms.md)

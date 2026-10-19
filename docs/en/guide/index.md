@@ -1,6 +1,6 @@
 ---
 title: User Guide
-description: Explore the Snapemu user guide, including getting started, importing games, gameplay controls, and frequently asked questions.
+description: Explore the Snapemu user guide, including getting started, importing games, gameplay controls, FAQs, and support.
 ---
 
 # User Guide
@@ -18,3 +18,4 @@ These guides are documentation placeholders. Detailed instructions and screensho
 - [Gameplay Controls](./controls.md): gameplay, controllers, display settings, and saves.
 - [Premium](./premium.md): planned Premium benefits and contacting the developer.
 - [FAQ](./faq.md): common questions and troubleshooting.
+- [Support](./support.md): contact the developer, report a problem, or get technical help.
